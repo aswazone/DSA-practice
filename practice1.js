@@ -157,9 +157,39 @@ class Queue {
     constructor(){
         this.queue = [];
     }
-    enqueue(){}
-    dequeue(){}
-    top(){}
-    isEmpty(){}
-    isEmpty(){}
+    enqueue(x){
+        this.queue.push(x)
+    }
+    dequeue(){
+        if(this.isEmpty()) return 'UnderFlow!!'
+        else return this.queue.shift()
+    }
+    top(){
+        if(this.isEmpty()) return 'No elements !!'
+        else return this.queue[0];
+    }
+    isEmpty(){
+        return this.size() === 0;
+    }
+    size(){
+        return this.queue.length;
+    }
+    print(){
+        console.log(this.queue.join(' ,'))
+    }
 }
+
+const newQueue = new Queue();
+
+newQueue.enqueue(12)
+newQueue.enqueue(24)
+newQueue.enqueue(45)
+newQueue.enqueue(56)
+newQueue.dequeue()
+newQueue.print()
+newQueue.dequeue()
+// newQueue.dequeue()
+// console.log(newQueue.dequeue())
+console.log(newQueue.dequeue())
+console.log(newQueue.top())
+console.log(newQueue);
