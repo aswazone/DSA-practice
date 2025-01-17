@@ -153,43 +153,128 @@
 
 // }
 
-class Queue {
-    constructor(){
-        this.queue = [];
-    }
-    enqueue(x){
-        this.queue.push(x)
-    }
-    dequeue(){
-        if(this.isEmpty()) return 'UnderFlow!!'
-        else return this.queue.shift()
-    }
-    top(){
-        if(this.isEmpty()) return 'No elements !!'
-        else return this.queue[0];
-    }
-    isEmpty(){
-        return this.size() === 0;
-    }
-    size(){
-        return this.queue.length;
-    }
-    print(){
-        console.log(this.queue.join(' ,'))
-    }
-}
+// class Queue {
+//     constructor(){
+//         this.queue = [];
+//     }
+//     enqueue(x){
+//         this.queue.push(x)
+//     }
+//     dequeue(){
+//         if(this.isEmpty()) return 'UnderFlow!!'
+//         else return this.queue.shift()
+//     }
+//     top(){
+//         if(this.isEmpty()) return 'No elements !!'
+//         else return this.queue[0];
+//     }
+//     isEmpty(){
+//         return this.size() === 0;
+//     }
+//     size(){
+//         return this.queue.length;
+//     }
+//     print(){
+//         console.log(this.queue.join(' ,'))
+//     }
+// }
+// {//operation
+//     const newQueue = new Queue();
+    
+//     newQueue.enqueue(12)
+//     newQueue.enqueue(24)
+//     newQueue.enqueue(45)
+//     newQueue.enqueue(56)
+//     newQueue.dequeue()
+//     newQueue.print()
+//     newQueue.dequeue()
+//     // newQueue.dequeue()
+//     // console.log(newQueue.dequeue())
+//     console.log(newQueue.dequeue())
+//     console.log(newQueue.top())
+//     console.log(newQueue);
+// }
 
-const newQueue = new Queue();
+//--------------------------------------------------------------------------
 
-newQueue.enqueue(12)
-newQueue.enqueue(24)
-newQueue.enqueue(45)
-newQueue.enqueue(56)
-newQueue.dequeue()
-newQueue.print()
-newQueue.dequeue()
-// newQueue.dequeue()
-// console.log(newQueue.dequeue())
-console.log(newQueue.dequeue())
-console.log(newQueue.top())
-console.log(newQueue);
+//implement queue by stack
+
+// class Queue {
+//     constructor(){
+//         this.stack1 = [];
+//         this.stack2 = [];
+//     }
+//     enqueue(x){
+//         this.stack1.push(x);
+//     }
+//     dequeue(){
+//         if(this.stack2.length === 0){
+//             while(this.stack1.length > 0){
+//                 this.stack2.push(this.stack1.pop())
+//             }
+//         }  
+//         return this.stack2.pop()
+//     }
+//     isEmpty(){
+//         return this.stack1.length === 0 && this.stack2.length === 0;
+//     }
+//     top(){
+//         if(this.stack2.length === 0){
+//             while(this.stack1.length > 0){
+//                 this.stack2.push(this.stack1.pop())
+//             }
+//         }
+//         return this.stack2[this.stack2.length-1]
+//     }
+// }
+
+//implement Stack by Queue
+
+// class Stack {
+//     constructor(){
+//         this.q1 = [];
+//         this.q2 = [];
+//     }
+//     push(x){
+//         while(this.q1.length !==0){
+//             this.q2.push(this.q1.shift())
+//         }
+//         this.q1.push(x)
+//         while(this.q2.length !==0){
+//             this.q1.push(this.q2.shift())
+//         }
+//     }
+//     pop(){
+//         if(isEmpty()) return 'Empty!!'
+//         else return this.q1.pop()
+//     }
+// }
+
+
+// class Queue{
+//     constructor(){
+//         this.stack1 = []
+//         this.stack2 = []
+//     }
+    
+//     enqueue(x){
+//         this.stack1.push();
+//     }
+//     dequeue(){
+//         if(this.stack2.length === 0){
+//             while(this.stack1.length > 0){
+//                 this.stack2.push(this.stack1.pop())
+//             }
+//         }
+//         return this.stack2.pop()
+//     }
+
+//     top(){
+//         if(this.stack2.length === 0){
+//             while(this.stack1.length > 0){
+//                 this.stack2.push(this.stack1.pop())
+//             }
+//         }
+//         return this.stack2[this.stack2.length -1]
+//     }
+// }
