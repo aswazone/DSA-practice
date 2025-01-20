@@ -151,7 +151,3 @@
 // console.log(newQueue)
 
 //----------------------------------------------
-
-function isValid(str){
-    
-}
