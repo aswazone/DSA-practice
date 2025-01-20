@@ -83,6 +83,15 @@ class BinarySearchTree {
         }
     }
 
+    min(root){
+        if(!root.left) return root.data;
+        else return this.min(root.left)
+    }
+    max(root){
+        if(!root.right) return root.data;
+        else return this.max(root.right);
+    }
+
 }
 
 
@@ -103,6 +112,8 @@ newBst.preOrder(newBst.root)
 newBst.inOrder(newBst.root)
 newBst.postOrder(newBst.root)
 newBst.levelOrder()
+console.log(newBst.min(newBst.root))
+console.log(newBst.max(newBst.root))
 
 console.log(newBst)
 
