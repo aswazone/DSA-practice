@@ -83,6 +83,25 @@ class BinarySearchTree {
         }
     }
 
+    delete(target){
+        this.root = this.deleteNode(this.root, target);
+    }
+    deleteNode(root, target){
+        if(root === null) return root;
+        if(target < root.data){
+            root.left = this.deleteNode(root.left, target);
+        }else if(target > root.data){
+            root.right = this.deleteNode(root.right, target);
+        }else{
+            if(!root.left && !root.right) return null;
+            if(!root.left) return root.right;
+            else if(!root.right) return root.left;
+            root.data = this.min(root.right);
+            root.right = this.deleteNode(root.right, root.data);
+        }
+        return root;
+    }
+
     min(root){
         if(!root.left) return root.data;
         else return this.min(root.left)
@@ -102,21 +121,25 @@ newBst.insert(5)
 newBst.insert(3)
 newBst.insert(15)
 newBst.insert(7)
-console.log(newBst.search(newBst.root,15))
-console.log(newBst.search(newBst.root,10))
-console.log(newBst.search(newBst.root,2))
-console.log(newBst.search(newBst.root,-1))
-console.log(newBst.search(newBst.root,20))
+// console.log(newBst.search(newBst.root,15))
+// console.log(newBst.search(newBst.root,10))
+// console.log(newBst.search(newBst.root,2))
+// console.log(newBst.search(newBst.root,-1))
+// console.log(newBst.search(newBst.root,20))
 
-newBst.preOrder(newBst.root)
+// newBst.preOrder(newBst.root)
 newBst.inOrder(newBst.root)
-newBst.postOrder(newBst.root)
-newBst.levelOrder()
-console.log(newBst.min(newBst.root))
-console.log(newBst.max(newBst.root))
+// newBst.postOrder(newBst.root)
+// newBst.levelOrder()
+// console.log(newBst.min(newBst.root))
+// console.log(newBst.max(newBst.root))
 
-console.log(newBst)
+// console.log(newBst)/=
 
-//========================================================== Tree Traversal ====================================================
-//Preorder traversal
+newBst.delete(10);
+console.log('--------- deleted !!');
+
+newBst.inOrder(newBst.root)
+
+//===================================================================================================================================================
 
