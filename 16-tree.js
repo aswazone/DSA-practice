@@ -68,8 +68,20 @@ class BinarySearchTree {
             this.postOrder(root.right);
             console.log(root.data);
         }
+    }   
+
+    // BFS traversal
+    levelOrder(){
+        const queue = [];
+        queue.push(this.root);
+        while(queue.length){
+            let current = queue.shift()
+            console.log(current.data);
+
+            if(current.left) queue.push(current.left);
+            if(current.right) queue.push(current.right);
+        }
     }
-    
 
 }
 
@@ -90,6 +102,7 @@ console.log(newBst.search(newBst.root,20))
 newBst.preOrder(newBst.root)
 newBst.inOrder(newBst.root)
 newBst.postOrder(newBst.root)
+newBst.levelOrder()
 
 console.log(newBst)
 
