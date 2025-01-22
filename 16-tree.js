@@ -93,7 +93,7 @@ class BinarySearchTree {
         }else if(target > root.data){
             root.right = this.deleteNode(root.right, target);
         }else{
-            if(!root.left && !root.right) return null;
+            // if(!root.left && !root.right) return null;
             if(!root.left) return root.right;
             else if(!root.right) return root.left;
             root.data = this.min(root.right);
