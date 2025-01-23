@@ -58,23 +58,106 @@ class Graph {
         return this.adjacencyList[vertex1].has(vertex2) &&
                 this.adjacencyList[vertex2].has(vertex1)
     }
+
+    removeEdge(vertex1, vertex2){
+        this.adjacencyList[vertex1].delete(vertex2)
+        this.adjacencyList[vertex2].delete(vertex1)
+    }
+
+    removeVertex(vertex){
+        if(!this.adjacencyList[vertex]) return;
+        for(let neighbour of this.adjacencyList[vertex]){
+            this.removeEdge(vertex, neighbour);
+        }
+        delete this.adjacencyList[vertex];
+    }
+
+    //  A -> B , C , D
+    //  B -> A , C , F
+    //  C -> A , B 
+    //  D -> F , A
+    //  E -> F 
+    //  F -> B , E , D
+    //  A
+
+    DFS(start,visited = new Set()){
+        if(visited.has(start)) return null;
+        visited.add(start);
+        console.log(start);
+        for(let neighbor of this.adjacencyList[start]){ //B
+            if(!visited.has(neighbor)) this.DFS(neighbor,visited);
+        }
+    }
+
+    BFS(start){
+        let visited = new Set();
+        visited.add(start)
+        let queue = [start];
+        while(queue.length > 0){
+            let node = queue.shift();
+            console.log(node);
+            for(let neighbor of this.adjacencyList[node]){
+                if(!visited.has(neighbor)){
+                    visited.add(neighbor);
+                    queue.push(neighbor);
+                }
+            }
+        }
+    }
 }
 
 
-const graph = new Graph();
-graph.addVertex('A')
-graph.addVertex('B')
-graph.addVertex('C')
 
-graph.addEdge('A','B')
-graph.addEdge('B','C')
 
-graph.display()
-console.log(graph.hasEdge('B','C'))
-console.log(graph.hasEdge('A','C'))
+// const graph = new Graph();
+// graph.addVertex('A')
+// graph.addVertex('B')
+// graph.addVertex('C')
 
-console.log(graph)
+// graph.addEdge('A','B')
+// graph.addEdge('B','C')
 
-//        B
-//       / \
-//      A   C
+// graph.display()
+// console.log(graph.hasEdge('B','C'))
+// console.log(graph.hasEdge('A','C'))
+
+// graph.removeEdge('A','B')
+// graph.display()
+
+// graph.removeVertex('A')
+// graph.display()
+
+// console.log(graph)
+
+//////        B
+//////       / \
+//////      A   C
+
+//=====================================================================
+
+//DFS -- practice;
+
+const newGraph = new Graph();
+
+newGraph.addVertex("A");
+newGraph.addVertex("B");
+newGraph.addVertex("C");
+newGraph.addVertex("D");
+newGraph.addVertex("E");
+newGraph.addVertex("F");
+
+newGraph.addEdge("A", "B");
+newGraph.addEdge("C", "A");
+newGraph.addEdge("C", "B");
+newGraph.addEdge("B", "F");
+newGraph.addEdge("E", "F");
+newGraph.addEdge("F", "D");
+newGraph.addEdge("A", "D");
+
+
+newGraph.display()
+console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+newGraph.DFS('A');
+console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+newGraph.BFS('A');
+// console.log(newGraph)
