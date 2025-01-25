@@ -17,4 +17,4 @@ function merge(leftArr,rightArr){
     return [...sortedArr, ...leftArr, ...rightArr]
 }
 
-console.log(mergeSort([8,20,-2,4,-6]))
+console.log(mergeSort([8,20,-2,4,-6]));
